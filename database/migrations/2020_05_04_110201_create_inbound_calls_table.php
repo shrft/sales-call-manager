@@ -15,6 +15,8 @@ class CreateInboundCallsTable extends Migration
     {
         Schema::create('inbound_calls', function (Blueprint $table) {
             $table->id();
+            $table->string('phone');
+            $table->timestamp('received_at');
             $table->timestamps();
         });
     }

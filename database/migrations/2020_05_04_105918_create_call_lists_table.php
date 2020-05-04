@@ -15,6 +15,11 @@ class CreateCallListsTable extends Migration
     {
         Schema::create('call_lists', function (Blueprint $table) {
             $table->id();
+            $table->integer('customer_id');
+            $table->text('note')->nullable();
+            $table->integer('called_by')->nullable();
+            $table->timestamp('called_at')->nullable();
+            $table->enum('status', ['hold', 'ready', 'done']);
             $table->timestamps();
         });
     }
