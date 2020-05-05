@@ -21,3 +21,4 @@ Auth::routes(['register' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/call-list', 'CallListController@index')->name('call_list');
+Route::get('/call-list/{id}', 'CallListController@detail')->name('call_list_detail');

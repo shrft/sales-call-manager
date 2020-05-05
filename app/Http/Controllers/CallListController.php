@@ -19,4 +19,8 @@ class CallListController extends Controller
 
         return view('call_list.index')->with('callList', $callList);
     }
+    public function detail(Request $request, $id){
+        $callList = CallList::findOrFail($id);
+        return view('call_list.detail')->with('callList', $callList);
+    }
 }
