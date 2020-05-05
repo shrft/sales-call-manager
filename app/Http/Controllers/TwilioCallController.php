@@ -26,6 +26,7 @@ class TwilioCallController extends Controller
              ]);
         $phoneNumberToDial = $request->input('phoneNumber');
         $dial->number($phoneNumberToDial);
+        
         Log::info('calling to a number:' . $phoneNumberToDial);
 
         return $response;

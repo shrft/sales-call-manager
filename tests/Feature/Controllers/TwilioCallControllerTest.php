@@ -9,7 +9,8 @@ use Tests\TestCase;
 class TwilioCallControllerTest extends TestCase
 {
     public function testNewCall(){
-        $response = $this->post('/support/call', ['phoneNumber'=>'818027281252']);
+        $response = $this->post('/twilio/call', ['phoneNumber'=>'818027281252']);
+        // dd($response->getContent());
         $response->assertStatus(200);
 
     }
