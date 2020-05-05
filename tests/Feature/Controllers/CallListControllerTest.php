@@ -25,5 +25,7 @@ class CallListControllerTest extends TestCase
         $this->assertEquals('my memo', $callList->note);
         $this->assertEquals('done', $callList->status);
         $res->assertRedirect(route('cl'));
+        $res = $this->followRedirects($res);
+        $res->assertSee('更新しました。');
     }
 }

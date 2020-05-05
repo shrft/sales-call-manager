@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if(Session::has('success'))
+                <div class="alert alert-primary" role="alert">
+                {{Session::get('success')}}
+                </div>
+            @endif
+            
             <div class="card">
                 <div class="card-header">
                     お客様一覧
@@ -33,7 +39,7 @@
                                 <td>{{$row->customer->name}}</td>
                                 <td>{{$row->present()->statusName}}</td>
                                 <td>{{$row->note}}</td>
-                                <td><a type="button" href="./call-list/detail?id={{$row->id}}" class="btn btn-info btn-sm"  target="_blank">詳細</a></td>
+                                <td><a type="button" href="{{route('cl.dtl',['id'=>$row->id])}}" class="btn btn-info btn-sm" >詳細</a></td>
                                 </tr>
                               @endforeach
                             </tbody>
