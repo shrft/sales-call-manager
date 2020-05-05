@@ -23,3 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/call-list', 'CallListController@index')->name('cl');
 Route::get('/call-list/{id}', 'CallListController@detail')->name('cl.dtl');
 Route::post('/call-list/{id}', 'CallListController@updateDetail')->name('cl.dtl.updt');
+
+Route::post(
+    '/twilio-token',
+    ['uses' => 'TwilioTokenController@newToken', 'as' => 'new-token']
+);
+Route::post(
+    '/twilio/call',
+    ['uses' => 'TwilioCallController@newCall', 'as' => 'new-call']
+);

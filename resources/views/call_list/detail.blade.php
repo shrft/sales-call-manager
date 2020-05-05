@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('javascript')
+{{-- <script src="/js/test.js"></script> --}}
+{{-- <script src="/js/manifest.js"></script> --}}
+<script src="{{ asset('js/browser-calls.js') }}"></script>
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -29,15 +34,16 @@
                                     value="{{ $callList->customer->name }}">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="phone">電話番号</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="03xxxxxxxx" name="phone"
+                        <div class="mb-3">
+                            <label for="phone">電話番号</label>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input id="phone" type="text" class="form-control" placeholder="03xxxxxxxx" name="phone"
                                         value="{{ $callList->customer->phone }}">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-secondary">電話する</button>
-                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-success call-customer-button" disabled>電話する</button>
+                                    <button class="btn btn-danger hangup-button" onclick="hangUp();return false;"disabled>切る</button>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +59,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="status">ステータス</label>
-                            {!! Form::select('status', ['ready'=>'未対応','hold'=>'保留','done'=>'完了'], $callList->status, ['class'=>'form-control']) !!}
+                            {!! Form::select('status', ['ready'=>'未対応','hold'=>'保留','done'=>'完了'], $callList->status,
+                            ['class'=>'form-control']) !!}
                         </div>
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">更新</button>
