@@ -20,7 +20,10 @@ class TwilioCallController extends Controller
         $response = new VoiceResponse();
         $callerIdNumber = config('twilio.number');
 
-        $dial = $response->dial(null, ['callerId'=>$callerIdNumber]);
+        $dial = $response->dial(null, [
+            'callerId'=>$callerIdNumber,
+            'record' => 'record-from-answer-dual'
+             ]);
         $phoneNumberToDial = $request->input('phoneNumber');
         $dial->number($phoneNumberToDial);
         Log::info('calling to a number:' . $phoneNumberToDial);
