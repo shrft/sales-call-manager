@@ -20,5 +20,6 @@ Route::get('/', function () {
 Auth::routes(['register' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/call-list', 'CallListController@index')->name('call_list');
-Route::get('/call-list/{id}', 'CallListController@detail')->name('call_list_detail');
+Route::get('/call-list', 'CallListController@index')->name('cl');
+Route::get('/call-list/{id}', 'CallListController@detail')->name('cl.dtl');
+Route::post('/call-list/{id}', 'CallListController@updateDetail')->name('cl.dtl.updt');

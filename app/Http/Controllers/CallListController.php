@@ -23,4 +23,13 @@ class CallListController extends Controller
         $callList = CallList::findOrFail($id);
         return view('call_list.detail')->with('callList', $callList);
     }
+    public function updateDetail(Request $request, $id){
+        $callList = CallList::findOrFail($id);
+        $callList->customer->phone = $request->get('phone','');
+        $callList->note = $request->note;
+        $callList->status = $request->status;
+        $callList->save();
+        $callList->customer->save();
+        return redirect()->route('cl');
+    }
 }

@@ -9,7 +9,8 @@
                     詳細
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="">
+                <form class="needs-validation" novalidate="" action="{{route('cl.dtl.updt',['id'=>$callList->id])}}" method="post">
+                    @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="companyName">会社名</label>
@@ -21,7 +22,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="phone">電話番号</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="03-xxxx-xxxx">
+                                    <input type="text" class="form-control" placeholder="03-xxxx-xxxx" name="phone">
                                     <div class="input-group-append">
                                         <button class="btn btn-secondary">電話する</button>
                                     </div>

@@ -9,7 +9,7 @@ class CallList extends Model
 {
     use PresentableTrait;
     protected $presenter = 'App\Presenters\CallListPresenter';
-    protected $fillable = [];
+    protected $fillable = ['*'];
 
     public function customer(){
         return $this->belongsTo('App\Customer')->withDefault();
