@@ -1,5 +1,6 @@
 <?php
 
+use App\CallList;
 use Illuminate\Database\Seeder;
 
 class CallListSeeder extends Seeder
@@ -11,6 +12,11 @@ class CallListSeeder extends Seeder
      */
     public function run()
     {
+        factory(CallList::class)->create();
+        factory(CallList::class)->create();
+        factory(CallList::class)->create();
+        factory(CallList::class)->create();
+        factory(CallList::class)->create();
         //
     }
 }

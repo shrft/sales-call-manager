@@ -25723,7 +25723,7 @@ callCustomerButtons.on('click', callCustomer);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shirafuta/my_apps/php7/callcenter/resources/js/browser-calls.js */"./resources/js/browser-calls.js");
+module.exports = __webpack_require__(/*! /Users/shirafuta/my_apps/php7/sales-call-manager/resources/js/browser-calls.js */"./resources/js/browser-calls.js");
 
 
 /***/ })
