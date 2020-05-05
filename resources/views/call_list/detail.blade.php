@@ -53,11 +53,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="status">ステータス</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="ready">未対応</option>
-                                <option value="hold">保留</option>
-                                <option value="done">完了</option>
-                            </select>
+                            {!! Form::select('status', ['ready'=>'未対応','hold'=>'保留','done'=>'完了'], $callList->status, ['class'=>'form-control']) !!}
                         </div>
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">更新</button>
