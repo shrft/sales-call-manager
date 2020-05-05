@@ -28,4 +28,18 @@ class CallListControllerTest extends TestCase
         $res = $this->followRedirects($res);
         $res->assertSee('更新しました。');
     }
+    public function testValidateUpdateDetail(){
+        // $this->withoutExceptionHandling();
+
+        $callList = factory(CallList::class)->create();
+
+        $res = $this->from(route('cl.dtl.updt', ['id'=>$callList->id]))->post('call-list/' . $callList->id, [
+            'note'=>'my memo',
+            'phone'=>'03-1234-5678',
+            'status'=>'done'
+            ]);
+        $res->assertRedirect(route('cl.dtl.updt', ['id'=>$callList->id]));
+        $res = $this->followRedirects($res);
+        $res->assertSee('[電話番号]は数字のみです。');
+    }
 }

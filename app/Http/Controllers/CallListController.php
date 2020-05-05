@@ -25,6 +25,10 @@ class CallListController extends Controller
     }
     public function updateDetail(Request $request, $id){
         $callList = CallList::findOrFail($id);
+        $validatedData = $request->validate([
+            'phone' => 'numeric',
+        ]);
+
         $callList->customer->phone = $request->get('phone','');
         $callList->note = $request->note;
         $callList->status = $request->status;
