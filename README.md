@@ -16,7 +16,7 @@
 ![screenshot](./doc/images/callcenter-m.gif)
 
 ### 使用している技術
-- PHP/Laravel
+- PHP7/Laravel
 - twilio (web上で電話をかけるためのクラウドサービス)
 
 ### twilioとは?
