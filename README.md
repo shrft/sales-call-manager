@@ -1,7 +1,8 @@
 # Telesales tool for small business
 
 ### Description
-Dead simple telesales/inside sales tool for small business.
+Dead simple telesales/inside sales tool for small business.    
+[README in Japanese/日本語はこちら](./README.ja.md)
 
 
 ### Features
