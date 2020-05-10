@@ -43,7 +43,7 @@ https://www.twilio.com/console/voice/twiml/apps/create
 3. レポジトリ配下に移動しセットアップを実行します
     ```
     $ cd sales-call-manager
-    $ cp .env.example .env
+    $ cp .env.example.ja .env
     $ composer install
     $ npm install
     $ npm run dev
