@@ -1,45 +1,46 @@
-# Telesales tool for small business
+# フリーランス向け簡易コールセンターシステム
 
-### Description
-Dead simple telesales/inside sales tool for small business.
+### 概要
+ブラウザ上から、登録したリストにそって営業電話をかけることができるシステムです。    
+通話内容は全て録音されるので後から聞いて営業電話の内容を確認することができます。    
+エンジニア、デザイナーさんなどのクリエイターが、電話営業をフリーランスに委託した場合などの管理に利用できます。
 
 
-### Features
-- Show customer list
-- Call customers from browser
-- record conversation
-- add note to remember the conversation 
-- and more
+### 主な機能
+- 営業対象リストの表示
+- リストから対象を選択して、ブラウザからお客様に電話
+- 通話内容の録音
+- 通話ステータス(未対応、保留、完了)の登録
+- 通話メモの入力
 
-![screenshot](./doc/images/callcenter.gif)
+![screenshot](./doc/images/callcenter-m.gif)
 
-### Technology
+### 使用している技術
 - PHP7/Laravel
-- twilio 
+- twilio (web上で電話をかけるためのクラウドサービス)
 
-### What is Twilio?
-Simply put, Twilio is a developer platform for communications. 
-This tool use Twilio to make a call to customers.
+### twilioとは?
+twilioは電話の機能を簡単にアプリやウェブサイトに組み込むことができるAPIです。    
+料金は、5円/分程度です。    
+[料金表](https://cloudapi.kddi-web.com/price/)    
 
-[Price](https://www.twilio.com/voice/pricing/us)    
 
+### 利用方法
 
-### Getting Started
+1. twilioのアカウントを作成し、電話番号を取得してください。   
+以下のページの最初のTwilio電話番号を取得までやればOKです。    
+https://jp.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account
 
-1. Create a Twilio account and get your phone number.    
-follow tutorial below to get your phone number.  
-https://www.twilio.com/docs/usage/tutorials/how-to-use-your-free-trial-account
-
-2. Create a Twilio project. 
-Visit the site below, fill FRIENDLY NAME  with your desired name, then click Create.
+2. twilioのプロジェクトを作成します    
+以下のサイトにアクセスし、FRIENDLY NAMEに任意の名前を設定し[Create]をクリックします。    
 https://www.twilio.com/console/voice/twiml/apps/create
 
-2. Clone this repo.
+2. レポジトリをクローンします
     ```
     $ git clone https://github.com/shrft/sales-call-manager
     ```
 
-3. Execute the following commands to setup.
+3. レポジトリ配下に移動しセットアップを実行します
     ```
     $ cd sales-call-manager
     $ cp .env.example .env
@@ -48,52 +49,55 @@ https://www.twilio.com/console/voice/twiml/apps/create
     $ npm run dev
     ```
 
-4. Update .env     
+4. .envファイルの中身を更新します。     
+書き換えるところは.envファイルを見てください。    
 
-7. Generate app key.
+7. アプリケーションキーの生成
     ```
     php artisan key:generate
     ```
-5. Create a database with a name 'callcenter'.    
-If you change DB_DATABASE in .env, create a database with that name.
+5. databaseの作成    
+callcenterという名称でデータベースを作成してください。    
+.envのDB_DATABASEをcallcenterから変更した場合はその名前で作成してください。
 
-6. Create tables and sample data.
+6. テーブルの作成とサンプルデータの作成
     ```
     php artisan migrate
     php artisan db:seed
     ```
-7. Launch a server.
+7. サーバーの起動
     ```
     php artisan serve --host=127.0.0.1
     ```
-8. Visit below and see if customer list is shown.    
+8. 以下にアクセスしてお客様一覧が表示されることを確認    
 http://127.0.0.1:8000/call-list
-9. Expose the application to the internet.
+9. 外部からアプリケーションにアクセスできるようにする
     ```
-    ngrok http 8000
+    ngrok http -region=jp 8000
     ```
 
-10. Open twilio's project page.    
+10. twilioのプロジェクトページを開く    
 https://www.twilio.com/console/voice/twiml/apps
-11. Update REQUEST_URL with ngrok url and then click SAVE.    
- `https://[ngrok URL]/twilio/call`    
- Your ngrok url should be shown after you run ngrok command you have run above.
+11. コールバックURLを設定し[SAVE]をクリック    
+ Voice->REQUEST_URLの欄に以下を設定    
+ `https://[ngrokのURL]/twilio/call`    
+ 上記のURLはngrok実行時に表示されます。httpsのほうを入力してください。
     ```
     Forwarding http://abcdefg.jp.ngrok.io -> http://localhost:8000 
     Forwarding https://abcdefg.jp.ngrok.io -> http://localhost:8000 
     ```
 
-12. Visit the url below and input a phone number and click Call.    
+12. 以下のURLにアクセスし、任意の電話番号を入力し、電話をかけるボタンをおします    
 https://[ngrokのURL]/call-list/1    
-Phone numbers should be formatted with a '+' and country code e.g., +16175551212 (E.164 format)
+電話番号は国際番号つきで入力してください。    
+例: 080-0000-0000 にかける場合 => 818000000000    
+＊ トライアルアカウントだと電話の最初に英語のメッセージが流れる。無視でOK。
 
-13. You can listen to the recorded conversation from the url below.    
+13. 録音を聞いてみる    
+以下にアクセスして再生ボタンをクリックしてみてください。
 https://www.twilio.com/console/voice/dashboard
 
 
-### Nothing happens when you click call button?
-It may be due to slow page load.    
-You can try restart ngrok. When you do, you may set region as below.    
-Please change [jp] to your location.    
-```ngrok http -region=jp 8000```    
-If above does not solve your problem, reload page a few times.
+
+＊ ngrok経由だと動作が重くてうまく動かない場合があります。    
+そういった場合は、何度もreloadすればうまくいきます。
