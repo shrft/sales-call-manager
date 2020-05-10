@@ -13,7 +13,7 @@
 - 通話ステータス(未対応、保留、完了)の登録
 - 通話メモの入力
 
-![screenshot](./doc/images/callcenter-m.gif)
+![screenshot](./doc/images/callcenter-ja.gif)
 
 ### 使用している技術
 - PHP7/Laravel
