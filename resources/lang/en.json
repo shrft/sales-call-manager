@@ -1,0 +1,18 @@
+{
+    "customer list":"Customers",
+    "company name":"Company Name",
+    "status":"Status",
+    "note":"Note",
+    "ready":"Ready",
+    "hold":"On-hold",
+    "done":"Done",
+    "all":"All",
+    "detail":"Detail",
+    "phone number":"Phone Number",
+    "company url":"Company URL",
+    "optional":"Optional",
+    "update":"Update",
+    "call":"Call",
+    "hang up":"Hang Up",
+    "successfully updated.":"Successfully updated."
+}

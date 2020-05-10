@@ -20,7 +20,7 @@
             @endif
             <div class="card">
                 <div class="card-header">
-                    詳細
+                    @lang('detail')
                 </div>
                 <div class="card-body">
                     <form class="needs-validation" novalidate=""
@@ -29,41 +29,41 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="companyName">会社名</label>
+                                <label for="companyName">@lang('company name')</label>
                                 <input type="text" class="form-control-plaintext" id="companyName" readonly
                                     value="{{ $callList->customer->name }}">
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="phone">電話番号</label>
+                            <label for="phone">@lang('phone number')</label>
                             <div class="form-row">
                                 <div class="col">
                                     <input id="phone" type="text" class="form-control" placeholder="03xxxxxxxx" name="phone"
                                         value="{{ $callList->customer->phone }}">
                                 </div>
                                 <div class="col">
-                                    <button class="btn btn-success call-customer-button" disabled>電話する</button>
-                                    <button class="btn btn-danger hangup-button" onclick="hangUp();return false;"disabled>切る</button>
+                                    <button class="btn btn-success call-customer-button" disabled>@lang('call')</button>
+                                    <button class="btn btn-danger hangup-button" onclick="hangUp();return false;"disabled>@lang('hang up')</button>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="url">会社URL</label>
+                            <label for="url">@lang('company url')</label>
                             <a href="{{ $callList->customer->url }}" class="form-control"
                                 target="_blank">{{ $callList->customer->url }}</a>
                         </div>
                         <div class="mb-3">
-                            <label for="note">メモ<span class="text-muted">(任意)</span></label>
+                            <label for="note">@lang('note')<span class="text-muted">(@lang('optional'))</span></label>
                             <textarea name="note" id="note" cols="30" rows="5"
                                 class="form-control">{{ $callList->note }}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="status">ステータス</label>
-                            {!! Form::select('status', ['ready'=>'未対応','hold'=>'保留','done'=>'完了'], $callList->status,
+                            <label for="status">@lang('status')</label>
+                            {!! Form::select('status', ['ready'=>__('ready'),'hold'=>__('hold'),'done'=>__('done')], $callList->status,
                             ['class'=>'form-control']) !!}
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">更新</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">@lang('update')</button>
                     </form>
                 </div>
             </div>

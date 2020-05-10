@@ -34,6 +34,6 @@ class CallListController extends Controller
         $callList->status = $request->status;
         $callList->save();
         $callList->customer->save();
-        return redirect()->route('cl')->with('success','更新しました。');
+        return redirect()->route('cl')->with('success', __('successfully updated.'));
     }
 }

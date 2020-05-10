@@ -26,7 +26,7 @@ class CallListControllerTest extends TestCase
         $this->assertEquals('done', $callList->status);
         $res->assertRedirect(route('cl'));
         $res = $this->followRedirects($res);
-        $res->assertSee('更新しました。');
+        $res->assertSee('Successfully updated.');
     }
     public function testValidateUpdateDetail(){
         // $this->withoutExceptionHandling();
@@ -40,6 +40,6 @@ class CallListControllerTest extends TestCase
             ]);
         $res->assertRedirect(route('cl.dtl.updt', ['id'=>$callList->id]));
         $res = $this->followRedirects($res);
-        $res->assertSee('[電話番号]は数字のみです。');
+        $res->assertSee('The phone must be a number.');
     }
 }
